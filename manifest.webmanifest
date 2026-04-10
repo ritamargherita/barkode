@@ -1,0 +1,17 @@
+{
+  "name": "barkode",
+  "short_name": "barkode",
+  "description": "Scan dog and cat food labels and review them against barkode's EU guidance prototype.",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#fffaf2",
+  "theme_color": "#ff6b35",
+  "icons": [
+    {
+      "src": "./icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

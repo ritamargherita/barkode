@@ -1,0 +1,13 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="512" height="512" rx="120" fill="#FFF7EB"/>
+  <rect x="76" y="78" width="360" height="356" rx="74" fill="#172327"/>
+  <rect x="132" y="146" width="18" height="172" rx="9" fill="#FFF7EB"/>
+  <rect x="164" y="130" width="34" height="204" rx="17" fill="#FFF7EB"/>
+  <rect x="214" y="150" width="18" height="166" rx="9" fill="#FF6B35"/>
+  <rect x="248" y="124" width="44" height="220" rx="22" fill="#FFF7EB"/>
+  <rect x="308" y="144" width="18" height="176" rx="9" fill="#FF6B35"/>
+  <rect x="340" y="134" width="34" height="196" rx="17" fill="#FFF7EB"/>
+  <path d="M168 375C168 359.536 180.536 347 196 347H316C331.464 347 344 359.536 344 375V381C344 396.464 331.464 409 316 409H196C180.536 409 168 396.464 168 381V375Z" fill="#0F7B6C"/>
+  <path d="M190 112C190 91.0132 207.013 74 228 74C244.35 74 257.995 84.3208 262.84 98.7644C267.019 85.2802 279.567 75.5 294.4 75.5C312.661 75.5 327.7 90.3157 329.713 108.069C337.497 97.273 349.949 90.25 364.042 90.25C387.697 90.25 406.875 109.428 406.875 133.083V160H190V112Z" fill="#FF6B35"/>
+  <circle cx="255.5" cy="214.5" r="20.5" fill="#0F7B6C"/>
+</svg>

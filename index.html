@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>barkode | Scan pet food against EU guidance</title>
+    <meta
+      name="description"
+      content="barkode is a concept app for scanning dog and cat food labels and checking them against European pet food rules and FEDIAF guidance."
+    />
+    <meta name="theme-color" content="#ff6b35" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="barkode" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+    <link rel="icon" href="./icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="./icon.svg" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Barkode MVP</p>
+          <h1>Read the label before it reaches the bowl.</h1>
+          <p class="lead">
+            A first product prototype for scanning dog and cat food and checking
+            what the label does and does not prove under current European rules.
+          </p>
+          <div class="hero-pills">
+            <span>EU labelling rules</span>
+            <span>FEDIAF 2025 guidance</span>
+            <span>Honest about missing data</span>
+          </div>
+        </div>
+        <aside class="hero-card">
+          <h2>What this version can do</h2>
+          <ul>
+            <li>Flag label fields that should be present</li>
+            <li>Distinguish complete vs complementary feed</li>
+            <li>Check mineral-feed edge cases</li>
+            <li>Calculate calcium-to-phosphorus ratio when available</li>
+          </ul>
+          <p>
+            This MVP avoids fake certainty. Nutrient adequacy checks that need
+            manufacturer data are shown as “needs more data”.
+          </p>
+        </aside>
+      </header>
+
+      <section class="install-strip">
+        <div>
+          <p class="eyebrow">Phone Practice</p>
+          <h2>Try it like an app on your phone</h2>
+        </div>
+        <div class="install-copy">
+          <p>
+            Open this site on your phone, then use <strong>Add to Home Screen</strong>.
+            On iPhone, use Safari's Share menu. On Android, use Chrome's menu.
+          </p>
+          <p id="installStatus" class="install-status">
+            Hosting note: phone install works best once this folder is published on a simple HTTPS host.
+          </p>
+        </div>
+      </section>
+
+      <main class="workspace">
+        <section class="panel control-panel">
+          <div class="panel-head">
+            <h2>Label Intake</h2>
+            <p>Load a sample or enter what the pack actually says.</p>
+          </div>
+
+          <div class="stack">
+            <label class="field">
+              <span>Sample product</span>
+              <select id="sampleSelect">
+                <option value="">Choose a sample</option>
+              </select>
+            </label>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Product name</span>
+                <input id="productName" type="text" placeholder="Nordic Salmon Feast" />
+              </label>
+              <label class="field">
+                <span>Barcode</span>
+                <input id="barcode" type="text" inputmode="numeric" placeholder="5412345678901" />
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Species</span>
+                <select id="species">
+                  <option value="">Select</option>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Life stage</span>
+                <select id="lifeStage">
+                  <option value="adult">Adult</option>
+                  <option value="growth">Growth / puppy / kitten</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="field-grid">
+              <label class="field">
+                <span>Feed type</span>
+                <select id="feedType">
+                  <option value="complete">Complete feed</option>
+                  <option value="complementary">Complementary feed</option>
+                  <option value="mineral">Complementary mineral feed</option>
+                </select>
+              </label>
+              <label class="field">
+                <span>Format</span>
+                <select id="format">
+                  <option value="dry">Dry</option>
+                  <option value="wet">Wet</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="toggle-grid">
+              <label><input id="isDietetic" type="checkbox" /> Dietetic / particular nutritional purpose</label>
+              <label><input id="typeShown" type="checkbox" checked /> Feed type shown on label</label>
+              <label><input id="speciesShown" type="checkbox" checked /> Species shown on label</label>
+              <label><input id="hasAnalyticalConstituents" type="checkbox" checked /> Analytical constituents shown</label>
+              <label><input id="hasAdditives" type="checkbox" checked /> Additives section shown</label>
+              <label><input id="hasFeedingInstructions" type="checkbox" checked /> Feeding instructions shown</label>
+              <label><input id="hasContactChannel" type="checkbox" checked /> Contact channel shown</label>
+              <label><input id="hasVetAdvice" type="checkbox" /> Dietetic use says to seek expert or vet advice</label>
+            </div>
+
+            <div class="nutrient-block">
+              <div class="panel-head compact">
+                <h3>Analytical Constituents</h3>
+                <p>Enter as-fed label values in percent when available.</p>
+              </div>
+              <div class="field-grid triple">
+                <label class="field">
+                  <span>Moisture %</span>
+                  <input id="moisture" type="number" min="0" max="100" step="0.1" placeholder="8" />
+                </label>
+                <label class="field">
+                  <span>Protein %</span>
+                  <input id="protein" type="number" min="0" max="100" step="0.1" placeholder="27" />
+                </label>
+                <label class="field">
+                  <span>Fat %</span>
+                  <input id="fat" type="number" min="0" max="100" step="0.1" placeholder="15" />
+                </label>
+                <label class="field">
+                  <span>Fibre %</span>
+                  <input id="fibre" type="number" min="0" max="100" step="0.1" placeholder="2.5" />
+                </label>
+                <label class="field">
+                  <span>Ash %</span>
+                  <input id="ash" type="number" min="0" max="100" step="0.1" placeholder="7" />
+                </label>
+                <label class="field">
+                  <span>Calcium %</span>
+                  <input id="calcium" type="number" min="0" max="100" step="0.01" placeholder="1.2" />
+                </label>
+                <label class="field">
+                  <span>Phosphorus %</span>
+                  <input id="phosphorus" type="number" min="0" max="100" step="0.01" placeholder="0.9" />
+                </label>
+                <label class="field">
+                  <span>Sodium %</span>
+                  <input id="sodium" type="number" min="0" max="100" step="0.01" placeholder="0.2" />
+                </label>
+              </div>
+            </div>
+
+            <div class="actions">
+              <button id="analyzeButton" class="primary-button" type="button">Analyze label</button>
+              <button id="resetButton" class="ghost-button" type="button">Reset</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel results-panel">
+          <div class="panel-head">
+            <h2>Assessment</h2>
+            <p>European-rule checks first. Nutrition certainty only when the data supports it.</p>
+          </div>
+
+          <div id="summaryCard" class="summary-card"></div>
+          <div id="computedFacts" class="facts-grid"></div>
+          <div id="resultsList" class="results-list"></div>
+
+          <section class="evidence-block">
+            <div class="panel-head compact">
+              <h3>Evidence behind this MVP</h3>
+              <p>Current sources used for the checks in this prototype.</p>
+            </div>
+            <div class="source-list">
+              <article class="source-card">
+                <h4>EU feed labelling law</h4>
+                <p>
+                  Regulation (EC) No 767/2009 defines complete and complementary
+                  feed and lists key mandatory label elements for pet food.
+                </p>
+                <a href="https://eur-lex.europa.eu/eli/reg/2009/767/2010-09-01/eng" target="_blank" rel="noreferrer">
+                  Open EUR-Lex source
+                </a>
+              </article>
+              <article class="source-card">
+                <h4>FEDIAF Nutritional Guidelines</h4>
+                <p>
+                  The September 2025 edition provides nutrient recommendations
+                  and calcium-phosphorus ratio bounds used here where the label
+                  gives enough data.
+                </p>
+                <a
+                  href="https://europeanpetfood.org/wp-content/uploads/2025/09/FEDIAF-Nutritional-Guidelines_2025-ONLINE.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Open FEDIAF 2025 PDF
+                </a>
+              </article>
+            </div>
+          </section>
+        </section>
+      </main>
+
+      <section class="roadmap">
+        <div>
+          <p class="eyebrow">Next Product Step</p>
+          <h2>From concept to real scanner</h2>
+        </div>
+        <div class="roadmap-grid">
+          <article>
+            <h3>1. Barcode lookup</h3>
+            <p>Connect EAN lookup to an EU-focused product database instead of manual entry.</p>
+          </article>
+          <article>
+            <h3>2. OCR + label parsing</h3>
+            <p>Read the analytical constituents and additives straight from a photo of the pack.</p>
+          </article>
+          <article>
+            <h3>3. Full nutrient engine</h3>
+            <p>Normalize values to dry matter and energy basis for stricter FEDIAF adequacy checks.</p>
+          </article>
+          <article>
+            <h3>4. Safety guardrails</h3>
+            <p>Keep a hard line between education, label transparency, and veterinary advice.</p>
+          </article>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>
