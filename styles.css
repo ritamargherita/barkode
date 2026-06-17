@@ -488,6 +488,12 @@ button:focus {
   background: rgba(255, 250, 242, 0.72);
 }
 
+.source-loading {
+  margin: 0;
+  padding: 14px;
+  color: var(--muted);
+}
+
 .guideline-table {
   width: 100%;
   min-width: 420px;

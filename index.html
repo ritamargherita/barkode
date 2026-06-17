@@ -11,6 +11,7 @@
     <meta name="theme-color" content="#ff6b35" />
     <link rel="icon" href="./icon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./app.js"></script>
   </head>
   <body>
     <div class="page-shell">
@@ -62,52 +63,15 @@
             <h2>Standards & Sources</h2>
             <p>Our checks are scoped to European pet food for cats and dogs, with sources shown before the app makes stronger claims.</p>
           </div>
-          <div class="guideline-table-wrap">
-            <table class="guideline-table">
-              <tbody>
-                <tr>
-                  <th scope="row">Market scope</th>
-                  <td>European pet food only</td>
-                </tr>
-                <tr>
-                  <th scope="row">Species scope</th>
-                  <td>Cats and dogs only</td>
-                </tr>
-                <tr>
-                  <th scope="row">Primary nutrition source</th>
-                  <td>FEDIAF Nutritional Guidelines for Complete and Complementary Pet Food for Cats and Dogs</td>
-                </tr>
-                <tr>
-                  <th scope="row">Guideline version</th>
-                  <td>Version 2025, publication September 2025</td>
-                </tr>
-                <tr>
-                  <th scope="row">Extracted for barkode</th>
-                  <td>June 17, 2026</td>
-                </tr>
-                <tr>
-                  <th scope="row">Extraction status</th>
-                  <td>Source registered. Full nutrient extraction and scoring are not active yet.</td>
-                </tr>
-              </tbody>
-            </table>
+          <div id="guidelineSourceTable" class="guideline-table-wrap">
+            <p class="source-loading">Loading guideline source details...</p>
           </div>
           <ul class="check-list">
             <li><strong>Regulation (EC) No 767/2009:</strong> EU pet feed labelling and safety rules</li>
             <li><strong>FEDIAF Nutritional Guidelines (2025):</strong> Recommended nutrient ranges for complete pet food</li>
             <li><strong>Calcium-to-phosphorus ratios:</strong> Based on life stage and species-specific guidance</li>
           </ul>
-          <div class="link-stack">
-            <a href="https://eur-lex.europa.eu/eli/reg/2009/767/2010-09-01/eng" target="_blank" rel="noreferrer">
-              Open EUR-Lex source
-            </a>
-            <a href="https://europeanpetfood.org/self-regulation/nutritional-guidelines/" target="_blank" rel="noreferrer">
-              Open FEDIAF guideline page
-            </a>
-            <a href="https://europeanpetfood.org/wp-content/uploads/2025/09/FEDIAF-Nutritional-Guidelines_2025-ONLINE.pdf" target="_blank" rel="noreferrer">
-              Open FEDIAF 2025 PDF
-            </a>
-          </div>
+          <div id="guidelineSourceLinks" class="link-stack"></div>
         </section>
 
         <section class="panel">
