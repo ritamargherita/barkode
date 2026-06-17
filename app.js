@@ -23,6 +23,7 @@ function renderGuidelineSource(source) {
           .join("")}
       </tbody>
     </table>
+    ${source.notice ? `<p class="source-notice">${source.notice}</p>` : ""}
   `;
 
   linkContainer.innerHTML = source.links
